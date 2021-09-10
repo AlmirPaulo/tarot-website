@@ -8,6 +8,9 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/card')
+def card():
+    return render_template('1.html')
 
 #factory
 def create_app():

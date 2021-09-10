@@ -1,14 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
 
+
+body {
+    font-family:'Noto Sans JP';
+}
+
 h1,h2,h3,h4,h5,h6{
     font-family: Courgette;
 }
 
-p {
-    font-family:'Noto Sans JP';
-}
-
 #brand{
     font-family: 'Courgette';
+}
+
+img{
+    width: 300px;
+    height: auto;
 }
