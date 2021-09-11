@@ -12,15 +12,10 @@
 <body class="bg-warning">
   <header>
     <nav class="navbar bg-primary navbar-expand-sm navbar-light">
-    <a class="navbar-brand text-light" id="brand" href="">Brand</a>
+      <a class="navbar-brand text-light" id="brand" href="{{ url_for('home') }}">Brand</a>
 			<div class="collapse navbar-collapse">
 			<ul class='navbar-nav ml-auto' >
-				<li class='nav-item dropdown'><a class="nav-link dropdown-toggle text-light" href="">Cards</a>
-          <ul class="dropdown-menu">
-            <!-- jinja to automate item creation -->
-            <li><a class="dropdown-item text-light" href=""></a></li>
-          </ul>
-        </li>
+        <li class='nav-item'><a class="nav-link text-light" href="{{ url_for('cards') }}">Cards</a>
         <li class='nav-item'><a class="nav-link text-light" href="{{ 'https://almirpaulo.github.io/' }}" target={{ '_blank'}}> The Author</a></li>
 				<li class='nav-item'><a class="nav-link text-light" href="" >Contribute</a></li>
         
