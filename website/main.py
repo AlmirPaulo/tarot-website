@@ -9,11 +9,17 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
 
 @app.route("/cards")
 def cards():
-    return render_template('cards.html')
-    
+    return render_template("cards.html")
+
+@app.route("/about")
+def about():
+    return render_template('about.html')
 
 @app.route("/yourcard")
 def your_card():
@@ -24,6 +30,9 @@ def your_card():
 
     return render_template("card.html", pick=pick, pic=pic, data=data)
 
+@app.route('/docs')
+def api_docs():
+    return render_template('docs.html')
 
 @app.route("/api")
 def get_data():
