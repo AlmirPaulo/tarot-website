@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "tarot-website"
 version = "0.1.0"
-description = ""
+description = "A website to read tarot in very special way."
 authors = ["AlmirPaulo <ap.freelas@gmail.com>"]
 
 [tool.poetry.dependencies]
