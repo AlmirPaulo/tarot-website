@@ -5,18 +5,37 @@
 <main class="container mt-3">
     <div class='row mt-2'>
         <div class="col-2">
-            ads
+            <!-- ads -->
         </div>
         <div class="col-10">
+            <h1>The Idea</h1>
+            <p>The main purpose of this website is to be a tool to help you in your self-knowledge journey. Of course, in the mean time we will learn a bit of Tarot and maybe you get interested in other alike subjects.</p>
+        <p>You will find out how Mythologies, Religions, Kabbalah, Astrology, Alchemy and Tarot are so closely related. All this ancient traditions are full of wisdom and deep philosophy. And I hope it can shed so much light into your mind as you need.</p>
           <h1>The Author</h1>
           <p>Hi!</p>
-          <p>Thank you very much for using this website! I hope the Tarot may enlight your mind and you are doing well. I'm Almir Paulo. I really like tarot and other esoteric subjects, but actually I am a programmer and I probably have other stuff you may like. You know, my job is to create softwares to make your life better and easier <a href="https://almirpaulo.github.io/" target="_blank">check it out</a>. 
+          <p>Thank you very much for using this website! I hope the Tarot may enlight your mind. I'm <a href="{{ 'https://twitter.com/AlmirPauloDev' }}" target="_blank">Almir Paulo</a>. I really like tarot and other esoteric subjects, but actually I am a programmer and I probably have other stuff you may like. You know, my job is to create softwares to make your life better and easier <a href="{{ 'https://almirpaulo.github.io/' }}" target="_blank">check it out</a>. 
           </p>
           <h1>Contribute</h1>
-          <p>I'm sorry if this ads are bothering you. But, hey I need to make some money here, right? &#128540 So, could you please consider to turn off your adblocker while using this site? come on... you can do that for me! I have never ask you anything!</p>
+          <p>I'm sorry if this ads are bothering you. But, hey I think I deserve some money here, right? &#128540 So, could you please consider to turn off your adblocker while using this site? Come on... you can do that for me! I have never ask you anything!</p>
           <p>If you are willing to spend some money to say "thank you", I would appreciate if you could contribute at my "Buy me a Coffee" page.</p>
+          <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="apdev" data-color="#5F7FFF" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
           <h1>Contact</h1>
-          <p>If you need to contact me you can reach me at ...<p>
+          <form action="{{ url_for('email')}}" method="POST">
+              <p>If you need to contact me, please fill this form and I will answer you as soon as possible.</p>
+            <input type="text" name="subject" placeholder="Subject" class="mt-2 bg-info form-control"  required>
+            <input type="text" name="email" placeholder="Email" class="mt-2 bg-info form-control" required>
+            <textarea name="text" cols="30" rows="10" class="mt-2 bg-info form-control" required></textarea>
+            <button type="submit" class="btn mt-2  btn-primary">Send</button>
+            {% with msgs = get_flashed_messages() %}
+            {% if msgs %}
+            {% for msg in msgs %}
+            
+            <span class="text-danger">{{ msg }}</span>
+
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+          </form>
         </div>
         </div>
 </main>

@@ -1,9 +1,13 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, flash, redirect
+from flask_mail import Mail, Message
 from data import *
-import random, requests
+import random, config, requests, os,logging
+
+
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s:%(module)s:%(levelname)s:%(message)s')
 
 app = Flask(__name__)
-
+mail = Mail()
 
 @app.route("/")
 def home():
@@ -68,9 +72,48 @@ def get_data():
     ]
     return jsonify(json)
 
+@app.route('/email', methods=['POST'])
+def email():
+    if request.method == 'POST' and request.headers['Referer'] == 'http://localhost:5000/about': #prod: config.HOMEPAGE
+
+        #Getting data
+        email = request.form.get('email')
+        subject = request.form.get('subject')
+        text = request.form.get('text')
+        if len(email) > 255 or len(subject) > 255 or len(text) > 1000:
+            flash('This message is too long!')
+
+        #Sending email
+        msg = Message(f'{subject} - {email}')
+        msg.body = text
+        msg.recipients = [config.MAIL_DEFAULT_SENDER]
+        mail.send(msg)
+        
+        logging.info('email sent')
+
+        flash('Email sent')
+        return redirect('/about')
+    # prod: return redirect(config.HOMEPAGE)
+
+    else:
+        logging.warning(request.headers['Referer'])
+        return "I'm sorry I can't help you."
 
 # factory
 def create_app():
+    #Change it in prod
+    app.config['SECRET_KEY'] = os.urandom(32)
+    app.config['MAIL_SERVER'] = config.MAIL_SERVER
+    app.config['MAIL_PORT'] = config.MAIL_PORT
+    app.config['MAIL_USE_TLS'] = config.MAIL_USE_TLS
+    app.config['MAIL_USE_SSL'] = config.MAIL_USE_SSL
+    app.config['MAIL_USERNAME'] = config.MAIL_USERNAME
+    app.config['MAIL_PASSWORD'] = config.MAIL_PASSWORD
+    app.config['MAIL_DEFAULT_SENDER'] = config.MAIL_DEFAULT_SENDER
+    app.config['MAIL_MAX_EMAILS'] = config.MAIL_MAX_EMAILS
+    app.config['MAIL_ASCII_ATTACHMENTS'] = config.MAIL_ASCII_ATTACHMENTS
+
+    mail.init_app(app)
     return app
 
 
