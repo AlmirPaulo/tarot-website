@@ -24,7 +24,14 @@
 		</div>
 	</nav>
   </header>
-  <div id="cards"></div>
+  <h1>Contact</h1>
+  <form action="{{ url_for('email')}}" method="POST">
+    <p>If you need to contact me, please fill this form and I will answer you as soon as possible.</p>
+  <input type="text" name="subject" placeholder="Subject" class="mt-2 bg-info form-control"  required>
+  <input type="text" name="email" placeholder="Email" class="mt-2 bg-info form-control" required>
+  <textarea name="text" cols="30" rows="10" class="mt-2 bg-info form-control" required></textarea>
+  <button type="submit" class="btn mt-2  btn-primary">Send</button>
+  </form>
   <footer class="mt-5">
     <center>
       <small>
@@ -34,6 +41,5 @@
       </small>
     </center>
   </footer>
-  <script src="./src/getAllCards.js"></script>
 </body>
 </html>
