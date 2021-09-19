@@ -6,10 +6,12 @@
   <meta name="viewport" content= "width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="src/bootstrap.min.css">
   <link rel="stylesheet" href="src/style.css">
+  <script src="src/Brython-3.9.5/brython.js"></script>
+  <script src="src/Brython-3.9.5/Brython-3.9.5/brython_stdlib.js"></script>
   <link rel="icon" href="src/logo.png">
   <title>Tarot Yourself</title>
 </head>
-<body class="bg-warning">
+<body onload="brython()" class="bg-warning">
   <header>
     <nav class="navbar bg-primary navbar-expand-sm navbar-light">
       <a class="navbar-brand text-light" id="brand" href="index.html" data-link><img src="src/logo.png" style="width:7%;height:auto;" alt="cards" data-link>Tarot Yourself</a>
@@ -24,7 +26,7 @@
 		</div>
 	</nav>
   </header>
-  <div id="cards"></div>
+  <div class="container" id="box"></div>
   <footer class="mt-5">
     <center>
       <small>
@@ -34,6 +36,6 @@
       </small>
     </center>
   </footer>
-  <script src="./src/getAllCards.js"></script>
+  <script type="text/python" src="src/get_all_cards.py"></script>
 </body>
 </html>

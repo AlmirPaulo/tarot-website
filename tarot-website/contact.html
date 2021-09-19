@@ -24,14 +24,16 @@
 		</div>
 	</nav>
   </header>
+  <div class="mt-2 container">
   <h1>Contact</h1>
-  <form action="{{ url_for('email')}}" method="POST">
-    <p>If you need to contact me, please fill this form and I will answer you as soon as possible.</p>
-  <input type="text" name="subject" placeholder="Subject" class="mt-2 bg-info form-control"  required>
-  <input type="text" name="email" placeholder="Email" class="mt-2 bg-info form-control" required>
-  <textarea name="text" cols="30" rows="10" class="mt-2 bg-info form-control" required></textarea>
-  <button type="submit" class="btn mt-2  btn-primary">Send</button>
-  </form>
+    <form action="https://EmailSendForm.almirpaulo.repl.co/site2_email" method="POST">
+      <p>If you need to contact me, please fill this form and I will answer you as soon as possible.</p>
+      <input type="text" name="subject" placeholder="Subject" class="mt-2 bg-info form-control"  required>
+      <input type="text" name="email" placeholder="Email" class="mt-2 bg-info form-control" required>
+      <textarea name="text" cols="30" rows="10" class="mt-2 bg-info form-control" required></textarea>
+      <button type="submit" class="btn mt-2  btn-primary">Send</button>
+    </form>
+  </div>
   <footer class="mt-5">
     <center>
       <small>
